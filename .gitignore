@@ -102,3 +102,18 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Model weights and checkpoints
+*.hdf5
+*.keras
+*.h5
+checkpoints/
+
+# Output
+output.txt
+
+# uv
+uv.lock
