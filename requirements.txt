@@ -1,0 +1,4 @@
+# Core dependencies (also declared in pyproject.toml)
+tensorflow>=2.16
+numpy>=1.24
+pandas>=2.0
