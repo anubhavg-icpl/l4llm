@@ -22,7 +22,8 @@ def build_model(seq_length: int, n_vocab: int) -> tf.keras.Model:
     """
     model = tf.keras.Sequential(
         [
-            tf.keras.layers.LSTM(256, return_sequences=True, input_shape=(seq_length, 1)),
+            tf.keras.layers.Input(shape=(seq_length, 1)),
+            tf.keras.layers.LSTM(256, return_sequences=True),
             tf.keras.layers.Dropout(0.2),
             tf.keras.layers.LSTM(256),
             tf.keras.layers.Dropout(0.2),

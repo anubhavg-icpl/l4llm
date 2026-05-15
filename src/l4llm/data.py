@@ -25,8 +25,10 @@ def load_dataset(path: str | Path) -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(f"Dataset not found: {path}")
 
-    df = pd.read_csv(path, encoding="utf-8", header=None, names=["lines"])
-    df["lines"] = df["lines"].str.lower().str.strip()
+    df = pd.read_csv(path, encoding="utf-8", header=None, names=["lines"], quotechar='"')
+    df = df.dropna(subset=["lines"])
+    df["lines"] = df["lines"].astype(str).str.lower().str.strip()
+    df = df[df["lines"].str.len() > 0]
     logger.info("Loaded %d lines from %s", len(df), path)
     return df
 

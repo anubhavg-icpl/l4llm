@@ -28,7 +28,7 @@ def cmd_train(args: argparse.Namespace) -> None:
 
     df = load_dataset(args.dataset)
     text = "\n".join(df["lines"])
-    char_to_int, int_to_char = build_char_mappings(text)
+    char_to_int, _int_to_char = build_char_mappings(text)
 
     logger.info(
         "Corpus: %d total characters, %d unique characters",
