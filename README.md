@@ -1,8 +1,6 @@
 <div align="center">
 
-<!-- IMAGE PLACEHOLDER: Hero banner
-PROMPT: "A sleek dark-themed hero banner for a GitHub repository called 'l4llm' - LSTM Pickup Lines Generator. Show a stylized neural network visualization on the left side with glowing LSTM cells connected by flowing data streams, and on the right side show speech bubbles with flirty text emerging from a terminal window. Color palette: deep navy (#0d1117), electric purple (#8b5cf6), neon pink (#ec4899), and cyan (#06b6d4). Modern, clean, tech-meets-romance aesthetic. No text in the image."
-ASPECT RATIO: 16:9 (1280x720) -->
+<img src="assets/banner.avif" alt="l4llm - LSTM Pickup Lines Generator" width="100%">
 
 # l4llm
 
@@ -65,9 +63,7 @@ The model reads text one character at a time, learns to predict the next charact
 
 This project was originally built as a fun weekend project using Keras 2 and Python 3.6-era tooling. It has since been fully modernized to 2026 standards: PEP 621 project configuration, TensorFlow 2.16+ / Keras 3 API, type hints throughout, modular package structure, CLI interface, temperature-based sampling, and strict Ruff linting.
 
-<!-- IMAGE PLACEHOLDER: Architecture overview diagram
-PROMPT: "A clean technical diagram showing a text generation pipeline. Left: a document icon labeled 'Dataset' with pickup line text flowing out. Center: a glowing LSTM neural network with two stacked layers showing memory cells and gates, labeled '2-Layer LSTM (256 units)'. Right: a terminal window showing generated text output. Arrows connect each stage. Below the LSTM: a color-coded temperature slider going from blue (cold/conservative) to red (hot/creative). Dark background, modern infographic style, no text overlap."
-ASPECT RATIO: 21:9 (1920x823) -->
+<img src="assets/pipeline-diagram.avif" alt="Text generation pipeline: Dataset → LSTM → Generated output with temperature control" width="100%">
 
 ---
 
@@ -123,6 +119,10 @@ An LSTM cell has three gates:
 
 Our model stacks two LSTM layers (each with 256 units) with 20% dropout between them. This gives the model enough capacity to learn complex character-level patterns while the dropout prevents overfitting on our relatively small dataset.
 
+<p align="center">
+  <img src="assets/lstm-closeup.avif" alt="LSTM memory cells close-up with flowing character data streams" width="90%">
+</p>
+
 The model has approximately **798,499 trainable parameters** — small enough to train on a CPU in under 20 minutes, yet powerful enough to produce recognizable pickup line structures.
 
 ### Temperature Sampling
@@ -140,9 +140,7 @@ scaled_logits = log(probabilities) / temperature
 | 0.8 - 1.0 | More creative, some nonsense words, more unique combinations | Want something wild and unexpected |
 | 1.0+ | Very random, often incoherent, high entropy | Experimental / entertainment |
 
-<!-- IMAGE PLACEHOLDER: Temperature visualization
-PROMPT: "A horizontal infographic showing the effect of temperature on text generation. On the far left (labeled 'T=0.1, Conservative'): a neatly organized bookshelf with identical books. In the center-left (labeled 'T=0.5, Balanced'): a bookshelf with mostly organized books but a few colorful ones mixed in. In the center-right (labeled 'T=0.8, Creative'): a bookshelf with books scattered creatively, some open with glowing text. On the far right (labeled 'T=1.5, Chaotic'): books flying off shelves in a whirlwind of pages with glowing characters. Dark gradient background from cool blue on left to hot red on right."
-ASPECT RATIO: 16:9 (1280x720) -->
+<img src="assets/temperature-effect.avif" alt="Temperature effect on text generation: conservative to creative spectrum" width="100%">
 
 ---
 
@@ -273,6 +271,10 @@ Epoch 50: loss improved from 0.36583 to 0.34044, saving model to checkpoints/wei
 
 Training takes approximately **15-20 minutes on CPU** or **2-3 minutes on GPU** for 50 epochs on the included 161-line dataset.
 
+<p align="center">
+  <img src="assets/loss-curve.avif" alt="Training loss curve: 3.43 → 0.34 over 50 epochs" width="90%">
+</p>
+
 ### Generating Pickup Lines
 
 ```bash
@@ -300,6 +302,10 @@ l4llm generate \
 ```
 
 **Expected output:**
+
+<p align="center">
+  <img src="assets/terminal-output.avif" alt="Terminal window showing generated pickup lines output" width="90%">
+</p>
 
 ```
 2026-05-15 [INFO] l4llm.data: Loaded 161 lines from dataset/lines.csv
@@ -369,9 +375,7 @@ l4llm generate [-h] [-d DATASET] -w WEIGHTS [-s SEQ_LENGTH] [-l LENGTH] [-t TEMP
 
 ## Architecture
 
-<!-- IMAGE PLACEHOLDER: Architecture deep-dive diagram
-PROMPT: "A detailed technical architecture diagram for an LSTM text generation system. Show three panels side by side. Panel 1 'Data Pipeline': CSV file -> pandas DataFrame -> text corpus -> character mapping table -> sliding window sequences -> normalized arrays. Panel 2 'Model': Input layer (shape 60x1) -> LSTM 1 (256 units, return_sequences=True) -> Dropout 0.2 -> LSTM 2 (256 units) -> Dropout 0.2 -> Dense (softmax, 35 classes). Panel 3 'Generation': seed sequence -> model.predict() -> temperature scaling -> multinomial sampling -> append char -> shift window -> repeat. Use arrows and data flow lines. Dark tech theme with neon accents."
-ASPECT RATIO: 21:9 (1920x823) -->
+<img src="assets/pipeline-diagram.avif" alt="Architecture deep-dive: data pipeline, LSTM model, and generation loop" width="100%">
 
 ### Data Pipeline
 
@@ -595,9 +599,7 @@ Here are real outputs from a model trained for 50 epochs (loss: 0.3404) on the 1
 > are you a tornado? because you just blew me away.
 > did you invent the airplane? because you seem wright for me.
 
-<!-- IMAGE PLACEHOLDER: Output examples showcase
-PROMPT: "A dark-themed gallery display showing 6 floating smartphone screens, each displaying a different pickup line with a chat bubble interface. The phones are arranged in a 3x2 grid at a slight 3D angle. Each screen has a different accent color (purple, pink, cyan, green, orange, blue). The background is a deep dark gradient with subtle neural network node connections glowing faintly. Modern, sleek, social-media aesthetic."
-ASPECT RATIO: 16:9 (1280x720) -->
+<img src="assets/output-showcase.avif" alt="Generated pickup lines displayed on smartphone screens" width="100%">
 
 ---
 
